@@ -1,0 +1,13 @@
+# splatgen/stack.yaml
+
+resolver: lts-19.10
+
+packages:
+- .
+
+extra-deps:
+# - diagrams-1.4.1
+#- diagrams-svg-1.4.1
+#- diagrams-lib-1.4.1
+#- diagrams-contrib-1.4.1
+#- diagrams-rasterific-1.4.1
