@@ -24,9 +24,7 @@ bmg = 8 -- button margin
 bcr :: Double
 bcr = 8  -- button corner radius
 
--- Create a rectangle with rounded corners and text
 mkButton :: PreparedFont Double -> Flavor -> String -> Diagram B
--- debugRectangle :: PreparedFont Double -> QDiagram b V2 Double Any
 mkButton f flavor msg = 
    F.drop_rect 
     (F.fit_height (bht - bmg) $ F.fit_width (bwd - bmg) $ F.svgText def {F.textFont = f} msg)
@@ -36,7 +34,6 @@ mkButton f flavor msg =
     # lc white
     # centerXY
     <> roundedRect bwd bht bcr 
-    -- # fillTexture gradientGreen
     # fillTexture (if flavor == Greenish then gradientGreen 
                    else if flavor == Greyish then gradientGrey
                    else gradientRed)
@@ -69,17 +66,3 @@ gradientGrey = mkLinearGradient stopsGrey (0 ^& (-8.0)) (0 ^& 8.0) GradPad
 
 gradientRed :: Fractional n => Texture n
 gradientRed = mkLinearGradient stopsRed (0 ^& (-8.0)) (0 ^& 8.0) GradPad 
-
-{-
-gradientOf :: Fractional n => (Flavor -> Texture n)
-gradientOf Greenish = mkLinearGradient stopsGreen (0 ^& (-8.0)) (0 ^& 8.0) GradPad 
-gradientOf Greyish  = mkLinearGradient stopsGrey  (0 ^& (-8.0)) (0 ^& 8.0) GradPad 
--}
-
-{-
-gradient6 = mkLinearGradient stops (0 ^& (0.0)) (0 ^& 16.0) GradPad 
-gradient1 = mkLinearGradient stops ((-0.5) ^& 0) (0.5 ^& 0) GradPad 
-gradient2 = mkLinearGradient stops (0 ^& (-0.5)) (0 ^& 0.5) GradReflect
-gradient3 = mkLinearGradient stops ((-5.0) ^& 0) (5.0 ^& 0) GradPad 
-gradient4 = mkLinearGradient stops (0 ^& (-5.0)) (0 ^& 5.0) GradPad 
--}

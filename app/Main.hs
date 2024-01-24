@@ -35,6 +35,8 @@ main = do
   genOnOff  f "Switch" "Enable Adversary Raids"
   genOnOff  f "Switch" "Enable Music"
   genOnOff  f "Switch" "Enable Sound Effects"
+  genOnOff  f "Switch" "Enable Fog of War"
+  genOnOff  f "Switch" "Enable Minimap"
   genButton f Redish "Switch" "Return to Main Menu"
   genButton f Greenish "Mission" "0  Basic Movement"
   genButton f Greenish "Mission" "1  Guide Builder Home"

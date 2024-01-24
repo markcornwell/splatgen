@@ -8,3 +8,6 @@ run:
 
 install:
 	cp out/*.png ../slgjff/assets
+
+clean:
+	rm out/*
