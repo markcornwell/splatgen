@@ -45,14 +45,14 @@ main = do
   genButton f Centered Greenish "Mission" "3  Build Farms"
   genButton f Centered Greenish "Mission" "4  Train Soldiers"
 
-  genButton f Centered Greenish "Button" "1"
-  genButton f Centered Greenish "Button" "2"
-  genButton f Centered Greenish "Button" "3"
-  genButton f Centered Greenish "Button" "4"
-  genButton f Centered Greenish "Button" "5"
-  genButton f Centered Greenish "Button" "6"
-  genButton f Centered Greenish "Button" "7"
-  genButton f Centered Greenish "Button" "8"
+  genButton f LeftJustify Greenish "Button" "1"
+  genButton f LeftJustify Greenish "Button" "2"
+  genButton f LeftJustify Greenish "Button" "3"
+  genButton f LeftJustify Greenish "Button" "4"
+  genButton f LeftJustify Greenish "Button" "5"
+  genButton f LeftJustify Greenish "Button" "6"
+  genButton f LeftJustify Greenish "Button" "7"
+  genButton f LeftJustify Greenish "Button" "8"
   genButton f Centered Redish "Button" "Back to Main Menu"
 
 genOnOff :: Font -> String -> String -> IO()

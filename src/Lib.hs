@@ -24,18 +24,20 @@ bht = 20  -- button height
 bwd :: Double
 bwd = 300 -- button width
 
-bmg :: Double
-bmg = 8 -- button margin 
+vmg :: Double
+vmg = 8 -- vertical button margin 
+
+hmg :: Double
+hmg = 16 -- horizontal button margin 
 
 bcr :: Double
 bcr = 8  -- button corner radius
 
 
-
 mkButton :: PreparedFont Double -> Justify -> Flavor -> String -> Diagram B
 mkButton f Centered flavor msg = 
    F.drop_rect 
-    (F.fit_height (bht - bmg) $ F.fit_width (bwd - bmg) $ F.svgText def {F.textFont = f} msg)
+    (F.fit_height (bht - vmg) $ F.fit_width (bwd - hmg) $ F.svgText def {F.textFont = f} msg)
     # stroke
     # fontSizeL 12 
     # fc white
@@ -49,12 +51,13 @@ mkButton f Centered flavor msg =
 -- mkButtonL :: PreparedFont Double -> Flavor -> String -> Diagram B
 mkButton f LeftJustify flavor msg = 
    F.drop_rect 
-    (F.fit_height (bht - bmg) $ F.fit_width (bwd - bmg) $ F.svgText def {F.textFont = f} msg)
+    (F.fit_height (bht - vmg) $ F.fit_width (bwd - hmg) $ F.svgText def {F.textFont = f} msg)
     # stroke
     # fontSizeL 12 
     # fc white
     # lc white
---    # centerXY
+    # alignL  -- Left-align the text
+    # translateX (-0.5 * bwd + hmg)  -- Shift the diagram to the left
     <> roundedRect bwd bht bcr 
     # fillTexture (if flavor == Greenish then gradientGreen 
                    else if flavor == Greyish then gradientGrey
@@ -62,12 +65,12 @@ mkButton f LeftJustify flavor msg =
 
 mkButton f RightJustify flavor msg = 
    F.drop_rect 
-    (F.fit_height (bht - bmg) $ F.fit_width (bwd - bmg) $ F.svgText def {F.textFont = f} msg)
+    (F.fit_height (bht - vmg) $ F.fit_width (bwd - hmg) $ F.svgText def {F.textFont = f} msg)
     # stroke
     # fontSizeL 12 
     # fc white
     # lc white
---    # centerXY
+    # alignR
     <> roundedRect bwd bht bcr 
     # fillTexture (if flavor == Greenish then gradientGreen 
                    else if flavor == Greyish then gradientGrey
