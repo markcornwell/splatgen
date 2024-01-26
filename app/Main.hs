@@ -37,21 +37,32 @@ main = do
   genOnOff  f "Switch" "Enable Sound Effects"
   genOnOff  f "Switch" "Enable Fog of War"
   genOnOff  f "Switch" "Enable Minimap"
-  genButton f Redish "Switch" "Return to Main Menu"
-  genButton f Greenish "Mission" "0  Basic Movement"
-  genButton f Greenish "Mission" "1  Guide Builder Home"
-  genButton f Greenish "Mission" "2  Mine Copper"
-  genButton f Greenish "Mission" "3  Build Farms"
-  genButton f Greenish "Mission" "4  Train Soldiers"
+  genButton f Centered Redish "Switch" "Return to Main Menu"
+
+  genButton f Centered Greenish "Mission" "0  Basic Movement"
+  genButton f Centered Greenish "Mission" "1  Guide Builder Home"
+  genButton f Centered Greenish "Mission" "2  Mine Copper"
+  genButton f Centered Greenish "Mission" "3  Build Farms"
+  genButton f Centered Greenish "Mission" "4  Train Soldiers"
+
+  genButton f Centered Greenish "Button" "1"
+  genButton f Centered Greenish "Button" "2"
+  genButton f Centered Greenish "Button" "3"
+  genButton f Centered Greenish "Button" "4"
+  genButton f Centered Greenish "Button" "5"
+  genButton f Centered Greenish "Button" "6"
+  genButton f Centered Greenish "Button" "7"
+  genButton f Centered Greenish "Button" "8"
+  genButton f Centered Redish "Button" "Back to Main Menu"
 
 genOnOff :: Font -> String -> String -> IO()
 genOnOff f prefix msg = do
-  genButton f Greenish prefix $ msg ++ " On"
-  genButton f Greyish  prefix $ msg ++ " Off"
+  genButton f Centered Greenish prefix $ msg ++ " On"
+  genButton f Centered Greyish  prefix $ msg ++ " Off"
 
-genButton :: Font -> Flavor -> String -> String -> IO()
-genButton f flav prefix msg = do
-  let diagram = mkButton f flav msg
+genButton :: Font -> Justify -> Flavor -> String -> String -> IO()
+genButton f j flav prefix msg = do
+  let diagram = mkButton f j flav msg
   let basename = prefix ++ "-" ++ dashify msg
   let pngfile = "out/" ++ basename ++ ".png"
   let svgfile = "out/" ++ basename ++ ".svg"

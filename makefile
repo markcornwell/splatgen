@@ -1,5 +1,10 @@
 # makefile for splatgen
 
+all:
+	make build
+	make run
+	make install
+
 build:
 	stack build
 

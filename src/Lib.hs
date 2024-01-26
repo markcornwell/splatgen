@@ -2,7 +2,11 @@
 {-# LANGUAGE NoMonomorphismRestriction, FlexibleContexts #-}
 {-# LANGUAGE GADTs #-}
 
-module Lib (mkButton, Flavor(..)) where
+module Lib 
+  ( mkButton
+  , Justify(..)
+  , Flavor(..)
+  ) where
 
 import Diagrams.Prelude
 import Diagrams.Backend.SVG.CmdLine
@@ -11,6 +15,8 @@ import qualified Graphics.SVGFonts as F
 import Graphics.SVGFonts.ReadFont
 
 data Flavor = Greenish | Greyish | Redish deriving(Eq,Ord,Show)
+
+data Justify = LeftJustify | Centered | RightJustify deriving(Eq,Ord,Show)
 
 bht :: Double
 bht = 20  -- button height
@@ -24,8 +30,10 @@ bmg = 8 -- button margin
 bcr :: Double
 bcr = 8  -- button corner radius
 
-mkButton :: PreparedFont Double -> Flavor -> String -> Diagram B
-mkButton f flavor msg = 
+
+
+mkButton :: PreparedFont Double -> Justify -> Flavor -> String -> Diagram B
+mkButton f Centered flavor msg = 
    F.drop_rect 
     (F.fit_height (bht - bmg) $ F.fit_width (bwd - bmg) $ F.svgText def {F.textFont = f} msg)
     # stroke
@@ -37,6 +45,34 @@ mkButton f flavor msg =
     # fillTexture (if flavor == Greenish then gradientGreen 
                    else if flavor == Greyish then gradientGrey
                    else gradientRed)
+
+-- mkButtonL :: PreparedFont Double -> Flavor -> String -> Diagram B
+mkButton f LeftJustify flavor msg = 
+   F.drop_rect 
+    (F.fit_height (bht - bmg) $ F.fit_width (bwd - bmg) $ F.svgText def {F.textFont = f} msg)
+    # stroke
+    # fontSizeL 12 
+    # fc white
+    # lc white
+--    # centerXY
+    <> roundedRect bwd bht bcr 
+    # fillTexture (if flavor == Greenish then gradientGreen 
+                   else if flavor == Greyish then gradientGrey
+                   else gradientRed)
+
+mkButton f RightJustify flavor msg = 
+   F.drop_rect 
+    (F.fit_height (bht - bmg) $ F.fit_width (bwd - bmg) $ F.svgText def {F.textFont = f} msg)
+    # stroke
+    # fontSizeL 12 
+    # fc white
+    # lc white
+--    # centerXY
+    <> roundedRect bwd bht bcr 
+    # fillTexture (if flavor == Greenish then gradientGreen 
+                   else if flavor == Greyish then gradientGrey
+                   else gradientRed)
+
 
  {- gradient experiments -}
 
