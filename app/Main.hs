@@ -48,7 +48,7 @@ main = do
   genButton f Centered Greenish "Chapter" "0  Escape"
   genButton f Centered Greenish "Chapter" "1  Exile"
   genButton f Centered Greenish "Chapter" "2  Founding"
-  genButton f Centered Greenish "Chapter" "3  Survial"
+  genButton f Centered Greenish "Chapter" "3  Survival"
   genButton f Centered Greenish "Chapter" "4  Posterity"
 
   genButton f LeftJustify Greenish "Button" "1"
