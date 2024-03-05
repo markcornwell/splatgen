@@ -45,7 +45,7 @@ main = do
   genButton f Centered Greenish "Mission" "3  Build Farms"
   genButton f Centered Greenish "Mission" "4  Train Soldiers"
 
-  genButton f Centered Greenish "Chapter" "0  Escape"
+  genButton f Centered Greenish "Chapter" "0  Defender"
   genButton f Centered Greenish "Chapter" "1  Exile"
   genButton f Centered Greenish "Chapter" "2  Founding"
   genButton f Centered Greenish "Chapter" "3  Survival"
@@ -59,7 +59,18 @@ main = do
   genButton f LeftJustify Greenish "Button" "6"
   genButton f LeftJustify Greenish "Button" "7"
   genButton f LeftJustify Greenish "Button" "8"
-  genButton f Centered Redish "Button" "Back to Main Menu"
+  genButton f Centered    Redish   "Button" "Back to Main Menu"
+
+  genButton f Centered Greenish "Home" "Tutorials"
+  genButton f Centered Greenish "Home" "Campaign"
+  genButton f Centered Greenish "Home" "Saved Games"
+  genButton f Centered Greenish "Home" "Map Editor"
+  genButton f Centered Greenish "Home" "Standard Play"
+  genButton f Centered Greenish "Home" "Options"
+  genButton f Centered Greenish "Home" "Credits"
+  genButton f Centered Redish   "Home" "Leave Game"
+
+
 
 genOnOff :: Font -> String -> String -> IO()
 genOnOff f prefix msg = do
