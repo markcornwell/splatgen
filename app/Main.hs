@@ -70,7 +70,7 @@ main = do
   genButton f Centered Greenish "Home" "Credits"
   genButton f Centered Redish   "Home" "Leave Game"
 
-
+  genButton f Centered Redish   "Splash" "Enter"
 
 genOnOff :: Font -> String -> String -> IO()
 genOnOff f prefix msg = do
