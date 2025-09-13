@@ -4,6 +4,7 @@
 
 module Lib 
   ( mkButton
+  , mkWriting -- experimental
   , Justify(..)
   , Flavor(..)
   ) where
@@ -32,6 +33,37 @@ hmg = 16 -- horizontal button margin
 
 bcr :: Double
 bcr = 8  -- button corner radius
+
+
+mkWriting :: PreparedFont Double -> Justify ->String -> Diagram B
+mkWriting f Centered msg = 
+  F.drop_rect
+   (F.fit_height (bht - vmg) $ F.fit_width (bwd - hmg) $ F.svgText def {F.textFont = f} msg)
+      # stroke
+      # fontSizeL 12 
+      # fc black
+      # lc white
+      # centerXY
+
+mkWriting f LeftJustify msg = 
+  F.drop_rect
+   (F.fit_height (bht - vmg) $ F.fit_width (bwd - hmg) $ F.svgText def {F.textFont = f} msg)
+      # stroke
+      # fontSizeL 12 
+      # fc black
+      # lc white
+      # alignL 
+      # translateX (-0.5 * bwd + hmg)  -- Shift the diagram to the left
+
+mkWriting f RightJustify msg = 
+  F.drop_rect
+   (F.fit_height (bht - vmg) $ F.fit_width (bwd - hmg) $ F.svgText def {F.textFont = f} msg)
+      # stroke
+      # fontSizeL 12 
+      # fc black
+      # lc white
+      # alignR
+      # translateX (0.5 * bwd - hmg)  -- Shift the diagram to the right
 
 
 mkButton :: PreparedFont Double -> Justify -> Flavor -> String -> Diagram B
@@ -75,6 +107,7 @@ mkButton f RightJustify flavor msg =
     # fillTexture (if flavor == Greenish then gradientGreen 
                    else if flavor == Greyish then gradientGrey
                    else gradientRed)
+
 
 
  {- gradient experiments -}

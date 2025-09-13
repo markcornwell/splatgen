@@ -12,7 +12,7 @@ run:
 	stack run
 
 install:
-	cp out/*.png ../slgjff/assets
+	cp out/*.png ../slgjff/assets/art
 
 clean:
 	rm out/*

@@ -39,13 +39,14 @@ main = do
   genOnOff  f "Switch" "Enable Minimap"
   genButton f Centered Redish "Switch" "Return to Main Menu"
 
+{-}
   genButton f Centered Greenish "Mission" "0  Basic Movement"
   genButton f Centered Greenish "Mission" "1  Guide Builder Home"
   genButton f Centered Greenish "Mission" "2  Mine Copper"
   genButton f Centered Greenish "Mission" "3  Build Farms"
   genButton f Centered Greenish "Mission" "4  Train Soldiers"
-
-  genButton f Centered Greenish "Chapter" "0  Defender"
+-}
+  genButton f Centered Greenish "Chapter" "0  Dawn"
   genButton f Centered Greenish "Chapter" "1  Exile"
   genButton f Centered Greenish "Chapter" "2  Founding"
   genButton f Centered Greenish "Chapter" "3  Survival"
@@ -72,6 +73,15 @@ main = do
 
   genButton f Centered Redish   "Splash" "Enter"
 
+  genButton f Centered Greenish "Lobby" "Invite Friend"
+  genButton f Centered Greenish "Lobby" "Ready"
+
+  genWriting f Centered "Lobby" "Invite a Friend to Play Brave Splat"
+  genWriting f Centered "Lobby" "Waiting for Player 2"
+  genWriting f Centered "Lobby" "Player 2 has Accepted your Invite"
+  genWriting f Centered "Lobby" "Player 2 has Declined your Invite"
+  genWriting f Centered "Lobby" "Countdown will being when both players are ready"
+
 genOnOff :: Font -> String -> String -> IO()
 genOnOff f prefix msg = do
   genButton f Centered Greenish prefix $ msg ++ " On"
@@ -86,7 +96,14 @@ genButton f j flav prefix msg = do
   renderPretty svgfile (mkWidth 600) diagram
   convert pngfile svgfile 
 
-  --callCommand $ "rsvg-convert -d 72 -p 72 -f png -o " ++ pngfile ++ " " ++ svgfile
+genWriting :: Font -> Justify -> String -> String -> IO()
+genWriting f j prefix msg = do 
+  let diagram = mkWriting f j msg
+  let basename = prefix ++ "-" ++ dashify msg
+  let pngfile = "out/" ++ basename ++ ".png"
+  let svgfile = "out/" ++ basename ++ ".svg"
+  renderPretty svgfile (mkWidth 600) diagram
+  convert pngfile svgfile
 
 convert :: File -> File -> IO()
 convert pngfile svgfile = do
