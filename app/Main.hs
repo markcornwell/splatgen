@@ -39,18 +39,12 @@ main = do
   genOnOff  f "Switch" "Enable Minimap"
   genButton f Centered Redish "Switch" "Return to Main Menu"
 
-{-}
-  genButton f Centered Greenish "Mission" "0  Basic Movement"
-  genButton f Centered Greenish "Mission" "1  Guide Builder Home"
-  genButton f Centered Greenish "Mission" "2  Mine Copper"
-  genButton f Centered Greenish "Mission" "3  Build Farms"
-  genButton f Centered Greenish "Mission" "4  Train Soldiers"
--}
   genButton f Centered Greenish "Chapter" "0  Dawn"
   genButton f Centered Greenish "Chapter" "1  Forge"
   genButton f Centered Greenish "Chapter" "2  Crossroads"
   genButton f Centered Greenish "Chapter" "3  Sanctuary"
-  genButton f Centered Greenish "Chapter" "4  Storm"
+  genButton f Centered Greenish "Chapter" "4  Siege"
+  genButton f Centered Greenish "Chapter" "5  Storm"
 
   genButton f LeftJustify Greenish "Button" "1"
   genButton f LeftJustify Greenish "Button" "2"
